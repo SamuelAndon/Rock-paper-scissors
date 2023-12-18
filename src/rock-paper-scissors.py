@@ -78,15 +78,12 @@ def get_user_action():
 
     return user_action
 
-
-def play_another_round():
-    another_round = input("\nAnother round? (y/n): ")
-    return another_round.lower() == 'y'
-
-
 def main():
     user_actions_list = []
-    while True:
+    print("Indicates the number of games: ")
+    n_games = int(input())
+
+    while n_games > 0:
         try:
             user_action = get_user_action()
             user_actions_list.append(user_action)
@@ -97,10 +94,7 @@ def main():
 
         computer_action = get_computer_action(user_actions_list)
         assess_game(user_action, computer_action)
-
-        if not play_another_round():
-            break
-
+        n_games -= 1
 
 if __name__ == "__main__":
     main()
