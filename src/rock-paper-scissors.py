@@ -82,8 +82,9 @@ def main():
     user_actions_list = []
     print("Indicates the number of games: ")
     n_games = int(input())
-
-    while n_games > 0:
+    wins = 0
+    
+    for x in range(0, n_games):
         try:
             user_action = get_user_action()
             user_actions_list.append(user_action)
@@ -93,8 +94,11 @@ def main():
             continue
 
         computer_action = get_computer_action(user_actions_list)
-        assess_game(user_action, computer_action)
-        n_games -= 1
+        
+        if assess_game(user_action, computer_action) == GameResult.Victory:
+            wins +=1
+
+    print(f"You won {wins} games out of {n_games} games")
 
 if __name__ == "__main__":
     main()
