@@ -61,10 +61,15 @@ def assess_game(user_action, computer_action):
 
 def get_computer_action(user_actions_list):
     
-    new_user_action = Counter(user_actions_list)
-    action_final = max(new_user_action, key=lambda x: new_user_action[x])
-    computer_action = Victories[action_final]
-    print(f"Computer picked {computer_action.name}.")
+    if len(user_actions_list) == 1:
+        n_random = random.randint(0, 2)
+        computer_action = GameAction(n_random)
+
+    else:
+        new_user_action = Counter(user_actions_list)
+        action_final = max(new_user_action, key=lambda x: new_user_action[x])
+        computer_action = Victories[action_final]
+        print(f"Computer picked {computer_action.name}.")
 
     return computer_action
 
