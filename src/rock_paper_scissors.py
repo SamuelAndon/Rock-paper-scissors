@@ -62,20 +62,26 @@ def assess_game(user_action, computer_action):
 def get_computer_action(user_actions_list):
     
     if len(user_actions_list) == 1:
-        n_random = random.randint(0, 2)
-        computer_action = GameAction(n_random)
-
+        computer_action = GameAction(0)
     else:
         new_user_action = Counter(user_actions_list)
-        action_final = max(new_user_action, key=lambda x: new_user_action[x])
-        computer_action = Victories[action_final]
-        print(f"Computer picked {computer_action.name}.")
+        preferencia = ['Rock', 'Paper', 'Scissors']
+        max_value = max(new_user_action.values())
+        empate = list(new_user_action.values()).count(max_value)
 
+        if empate > 1:
+            action_final = min(new_user_action, key=lambda x: preferencia.index(GameAction(x).name))
+            computer_action = Victories[action_final]
+        else:
+            action_final = max(new_user_action, key=lambda x: new_user_action[x])
+            computer_action = Victories[action_final]
+            print(f"Computer picked {computer_action.name}.")
+            
     return computer_action
 
 
 def get_user_action():
-    # Scalable to more options (beyond rock, paper and scissors...)
+    
     game_choices = [f"{game_action.name}[{game_action.value}]" for game_action in GameAction]
     game_choices_str = ", ".join(game_choices)
     user_selection = int(input(f"\nPick a choice ({game_choices_str}): "))
