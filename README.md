@@ -16,4 +16,5 @@ Entorno de tareas | Observable| Agentes | Determinista | Episódico | Estático 
 - **Conocido:** ya que es conocido y jugado por millones de personas.
 
 ## Estructura del agente
-
+Mi modelo del agente está inspirado en el modelo agente basado en objetivos, ya que la finalidad del piedra, papel y tijera es intentar ganar las máximas partidas, con lo cual hay un objetivo concreto.
+![Modelo agente inteligente](./doc/modelo_IA.png)
