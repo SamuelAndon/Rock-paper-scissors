@@ -18,3 +18,11 @@ Entorno de tareas | Observable| Agentes | Determinista | Episódico | Estático 
 ## Estructura del agente
 Mi modelo del agente está inspirado en el modelo agente basado en objetivos, ya que la finalidad del piedra, papel y tijera es intentar ganar las máximas partidas, con lo cual hay un objetivo concreto.
 ![Modelo agente inteligente](./doc/modelo_IA.png)
+
+## Implementación - Simulando IA
+
+Lo primero fue añadir que el usuario introduzca el número de partidas que va querer jugar, tras eso empecé con el algoritmo de mi estrategia.
+
+Mi estrategía consiste en varios factores, en la primera partida sacaré siempre papel ya que por probabilidad general la gente suele empezar sacando piedra. Después por cada partida guardaré las veces que saca cada elemento del juego en un diccinario, donde cojo la opción que más usa y saca la opción que le gana. En caso de que haya empate en veces que se uso cada elemento, hice una lista con la orden de prioridad, es decir en caso de que sacara 2 veces piedra y papel, cojeriamos piedra por prioridad y sacariamos el contrario, papel.
+
+Por último implementé un contador de victorias que se va incrementando por cada victoria del usuario, indicandole al final el numero de partidas jugadas y cuantas dellas ganó.

@@ -61,7 +61,7 @@ def assess_game(user_action, computer_action):
 def get_computer_action(user_actions_list):
     
     if len(user_actions_list) == 1:
-        computer_action = GameAction(0)
+        computer_action = GameAction(1)
     else:
         new_user_action = Counter(user_actions_list)
         preferencia = ['Rock', 'Paper', 'Scissors']
