@@ -26,3 +26,7 @@ Lo primero fue añadir que el usuario introduzca el número de partidas que va q
 Mi estrategía consiste en varios factores, en la primera partida sacaré siempre papel ya que por probabilidad general la gente suele empezar sacando piedra. Después por cada partida guardaré las veces que saca cada elemento del juego en un diccinario, donde cojo la opción que más usa y saca la opción que le gana. En caso de que haya empate en veces que se uso cada elemento, hice una lista con la orden de prioridad, es decir en caso de que sacara 2 veces piedra y papel, cojeriamos piedra por prioridad y sacariamos el contrario, papel.
 
 Por último implementé un contador de victorias que se va incrementando por cada victoria del usuario, indicandole al final el numero de partidas jugadas y cuantas dellas ganó.
+
+## Bibliografía
+
+- Inteligencia Artificial un enfoque moderno, 2da Ed (Stuart Russell y Peter Norvig)
