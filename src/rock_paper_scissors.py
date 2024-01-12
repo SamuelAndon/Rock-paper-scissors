@@ -1,4 +1,3 @@
-import random
 from enum import IntEnum
 from collections import Counter
 
@@ -61,16 +60,27 @@ def assess_game(user_action, computer_action):
 
 def get_computer_action(user_actions_list):
     
-    new_user_action = Counter(user_actions_list)
-    action_final = max(new_user_action, key=lambda x: new_user_action[x])
-    computer_action = Victories[action_final]
-    print(f"Computer picked {computer_action.name}.")
+    if len(user_actions_list) == 1:
+        computer_action = GameAction(1)
+    else:
+        new_user_action = Counter(user_actions_list)
+        preferencia = ['Rock', 'Paper', 'Scissors']
+        max_value = max(new_user_action.values())
+        empate = list(new_user_action.values()).count(max_value)
 
+        if empate > 1:
+            action_final = min(new_user_action, key=lambda x: preferencia.index(GameAction(x).name))
+            computer_action = Victories[action_final]
+        else:
+            action_final = max(new_user_action, key=lambda x: new_user_action[x])
+            computer_action = Victories[action_final]
+            print(f"Computer picked {computer_action.name}.")
+            
     return computer_action
 
 
 def get_user_action():
-    # Scalable to more options (beyond rock, paper and scissors...)
+    
     game_choices = [f"{game_action.name}[{game_action.value}]" for game_action in GameAction]
     game_choices_str = ", ".join(game_choices)
     user_selection = int(input(f"\nPick a choice ({game_choices_str}): "))
@@ -78,15 +88,14 @@ def get_user_action():
 
     return user_action
 
-
-def play_another_round():
-    another_round = input("\nAnother round? (y/n): ")
-    return another_round.lower() == 'y'
-
-
 def main():
     user_actions_list = []
-    while True:
+    print("Indicates the number of games: ")
+    n_games = int(input())
+    temp_n_games = n_games
+    wins = 0
+
+    while n_games > 0:
         try:
             user_action = get_user_action()
             user_actions_list.append(user_action)
@@ -96,11 +105,13 @@ def main():
             continue
 
         computer_action = get_computer_action(user_actions_list)
-        assess_game(user_action, computer_action)
+        
+        if assess_game(user_action, computer_action) == GameResult.Victory:
+            wins +=1
 
-        if not play_another_round():
-            break
+        n_games -=1
 
+        print(f"You won {wins} games out of {temp_n_games} games")
 
 if __name__ == "__main__":
     main()
