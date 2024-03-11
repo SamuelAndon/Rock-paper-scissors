@@ -29,7 +29,7 @@ Por último implementé un contador de victorias que se va incrementando por cad
 
 ## Instalación
 
-1. Creamos un directorio y nos situamos en el
+1. Creamos un directorio y nos situamos en él
 ```
 mkdir rock_paper_scissors
 cd rock_paper_scissors
